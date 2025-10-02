@@ -8,7 +8,8 @@ function getToken(response){
     var xttreq= new XMLHttpRequest();
     xttreq.open("POST",response.sfdc_community_url+"/services/oauth2/token",true);
     xttreq.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    xttreq.send("code="+response.code+"&grant_type=authorization_code&client_id="+clientId+"&redirect_uri="+redirectURL);
+    xttreq.send("code=" + response.code + "&grant_type=authorization_code&client_id=" + clientId + "&redirect_uri=" + redirectURL);
+  
     xttreq.onreadystatechange=function(){
         if(this.readyState==3){
             response = JSON.parse(xttreq.response);
