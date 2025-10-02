@@ -2,7 +2,11 @@
 // var clientId = "3MVG9XgkMlifdwVAPP1QzilrWxN4vxXanUxrP_wtiJKJMqA6GnZ1u41eQ.oP_8lPeh80GlG4byc0QpN3U2.84";
 // var baseURL = "https://tiger-dev-ed.trailblaze.my.site.com";
 // var redirectURL = "https://tiger-dev-ed.trailblaze.my.site.com/services/apexrest/code/extraction"
-//
+
+
+// var salesforceURL="https://tiger-dev-ed.trailblaze.my.salesforce.com";
+// var client_id='3MVG9XgkMlifdwVAPP1QzilrWxN4vxXanUxrP_wtiJKJMqA6GnZ1u41eQ.oP_8lPeh80GlG4byc0QpN3U2.84';
+// var redirect_uri='https://github.com/amit-rajput2007/SinglePage/oauth2/callback';
 // function getToken(response){
 
 //     var xttreq= new XMLHttpRequest();
@@ -65,6 +69,7 @@ if(this.readyState==3){
 
  }
  }
- document.getElementById('loginForm').addEventListener('submit', getAuthCode);
+
 }
+ document.getElementById('loginForm').addEventListener('submit', getAuthCode);
 
