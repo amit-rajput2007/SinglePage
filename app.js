@@ -57,9 +57,9 @@ var req=new XMLHttpRequest();
 req.open("POST",salesforceURL+"services/oauth2/authorize",true);
 req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 req.setRequestHeader("response_type=code&client_id="+client_id+"&redirect_uri="+redirect_uri);
-xhttprequest.onreadystatechange=function (){
+req.onreadystatechange=function (){
 if(this.readyState==3){
- var response=JSON.parse(xhttprequest.response);
+ var response=JSON.parse(req.response);
  console.log(response);
 
  }
