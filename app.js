@@ -8,7 +8,7 @@ function getToken(response){
     var xttreq= new XMLHttpRequest();
     xttreq.open("POST",response.sfdc_community_url+"/services/oauth2/token",true);
     xttreq.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    xttreq.send("code=" + response.code + "&grant_type=authorization_code&client_id=" + clientId  +"&redirect_uri=" + redirectURL);
+    xttreq.send("code=" + response.code + "&grant_type=authorization_code&client_id=" + clientId + "&redirect_uri=" + redirectURL);
   
     xttreq.onreadystatechange=function(){
         if(this.readyState==3){
@@ -31,7 +31,7 @@ xhttprequest.open("POST",baseURL+"/services/oauth2/authorize",true);
 xhttprequest.setRequestHeader("Auth-Request-Type","Named-User");
 xhttprequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 xhttprequest.setRequestHeader("Authorization","Basic "+cred);
-xhttprequest.send("response_type=code_credentials&client_id="+clientId+"&client_secret="+client_secret+"&redirect_uri="+redirectURL);
+xhttprequest.send("response_type=code_credentials&client_id="+clientId+"&redirect_uri="+redirectURL);
 xhttprequest.onreadystatechange=function (){
 if(this.readyState==3){
 var response=JSON.parse(xhttprequest.response);
@@ -41,6 +41,7 @@ console.log('sfdc_community_url'+response.code);
 getToken(response);
 }
 }
+    
 }
 
 // Attach the event listener to the form
