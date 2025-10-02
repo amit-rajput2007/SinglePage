@@ -56,7 +56,7 @@ function getAuthCode(){
 var req=new XMLHttpRequest();
 req.open("POST",salesforceURL+"services/oauth2/authorize",true);
 req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-req.setRequestHeader("response_type=code&client_id="+client_id+"&redirect_uri="+redirect_uri);
+req.send("response_type=code&client_id="+client_id+"&redirect_uri="+redirect_uri);
 req.onreadystatechange=function (){
 if(this.readyState==3){
  var response=JSON.parse(req.response);
