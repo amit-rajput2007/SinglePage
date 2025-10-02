@@ -59,7 +59,7 @@ var redirect_uri='https://github.com/amit-rajput2007/SinglePage/oauth2/callback'
 function getAuthCode(){
     event.preventDefault();
 var req=new XMLHttpRequest();
-req.open("POST",salesforceURL+"services/oauth2/authorize",true);
+req.open("POST",salesforceURL+"/services/oauth2/authorize",true);
 req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 req.send("response_type=code&client_id="+client_id+"&redirect_uri="+redirect_uri);
 req.onreadystatechange=function (){
