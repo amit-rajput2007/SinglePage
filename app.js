@@ -1,7 +1,7 @@
 
 var clientId = "3MVG9XgkMlifdwVAPP1QzilrWxN4vxXanUxrP_wtiJKJMqA6GnZ1u41eQ.oP_8lPeh80GlG4byc0QpN3U2.84";
-var baseURL = "	https://tiger-dev-ed.trailblaze.my.site.com";
-var redirectURL = "	https://tiger-dev-ed.trailblaze.my.site.com/services/apexrest/code/extraction"
+var baseURL = "https://tiger-dev-ed.trailblaze.my.site.com";
+var redirectURL = "https://tiger-dev-ed.trailblaze.my.site.com/services/apexrest/code/extraction"
 
 
 function startLogin(event) {
