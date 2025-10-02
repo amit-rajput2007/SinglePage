@@ -3,7 +3,19 @@ var clientId = "3MVG9XgkMlifdwVAPP1QzilrWxN4vxXanUxrP_wtiJKJMqA6GnZ1u41eQ.oP_8lP
 var baseURL = "https://tiger-dev-ed.trailblaze.my.site.com";
 var redirectURL = "https://tiger-dev-ed.trailblaze.my.site.com/services/apexrest/code/extraction"
 
+function getToken(response){
 
+    var xttreq= new XMLHttpRequest();
+    xttreq.open("POST",response.sfdc_community_url+"services/oauth2/token",true);
+    xttreq.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    xttreq.send("code="+response.code+"&grant_type=authorization_code&client_id="+clientId+"&redirect_uri="+redirectURL);
+    xttreq.onreadystatechange=function(){
+        if(this.readyState==3){
+            response = JSON.parse(xttreq.response);
+            console.log('token',response);
+        }
+    }
+}
 function startLogin(event) {
     // Prevent the form's default submit behavior
     event.preventDefault();
@@ -23,6 +35,7 @@ xhttprequest.onreadystatechange=function (){
 if(this.readyState==3){
 var response=JSON.parse(xhttprequest.response);
 console.log(response);
+getToken('authorization code'+response);
 }
 }
     
