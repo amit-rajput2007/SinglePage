@@ -35,7 +35,7 @@ xhttprequest.onreadystatechange=function (){
 if(this.readyState==3){
 var response=JSON.parse(xhttprequest.response);
 console.log(response);
-getToken('authorization code'+response);
+getToken(response);
 }
 }
     
