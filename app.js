@@ -31,7 +31,7 @@ xhttprequest.open("POST",baseURL+"/services/oauth2/authorize",true);
 xhttprequest.setRequestHeader("Auth-Request-Type","Named-User");
 xhttprequest.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 xhttprequest.setRequestHeader("Authorization","Basic "+cred);
-xhttprequest.send("response_type=code_credentials&client_id="+clientId+"&redirect_uri="+redirectURL);
+xhttprequest.send("response_type=code_credentials&client_id="+clientId+"&client_secret="+client_secret+"&redirect_uri="+redirectURL);
 xhttprequest.onreadystatechange=function (){
 if(this.readyState==3){
 var response=JSON.parse(xhttprequest.response);
