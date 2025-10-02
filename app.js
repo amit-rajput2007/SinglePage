@@ -35,6 +35,8 @@ xhttprequest.onreadystatechange=function (){
 if(this.readyState==3){
 var response=JSON.parse(xhttprequest.response);
 console.log(response);
+console.log('sfdc_community_url'+response.sfdc_community_url);
+console.log('sfdc_community_url'+response.code);
 getToken(response);
 }
 }
