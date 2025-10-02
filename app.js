@@ -6,7 +6,7 @@ var redirectURL = "https://tiger-dev-ed.trailblaze.my.site.com/services/apexrest
 function getToken(response){
 
     var xttreq= new XMLHttpRequest();
-    xttreq.open("POST",response.sfdc_community_url+"services/oauth2/token",true);
+    xttreq.open("POST",response.sfdc_community_url+"/services/oauth2/token",true);
     xttreq.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
     xttreq.send("code="+response.code+"&grant_type=authorization_code&client_id="+clientId+"&redirect_uri="+redirectURL);
     xttreq.onreadystatechange=function(){
