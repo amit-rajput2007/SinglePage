@@ -53,6 +53,7 @@ var client_id='3MVG9XgkMlifdwVAPP1QzilrWxN4vxXanUxrP_wtiJKJMqA6GnZ1u41eQ.oP_8lPe
 var redirect_uri='https://github.com/amit-rajput2007/SinglePage/oauth2/callback';
 
 function getAuthCode(){
+    event.preventDefault();
 var req=new XMLHttpRequest();
 req.open("POST",salesforceURL+"services/oauth2/authorize",true);
 req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
