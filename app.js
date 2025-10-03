@@ -62,7 +62,7 @@ var req=new XMLHttpRequest();
 
 req.open("POST",salesforceURL+"/services/oauth2/authorize",true);
 req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-req.setRequestHeader("Access-Control-Allow-Origin",true);
+req.setRequestHeader("Access-Control-Allow-Origin","https://amit-rajput2007.github.io/");
 req.send("response_type=code&client_id="+client_id+"&redirect_uri="+redirect_uri);
 req.onreadystatechange=function (){
 if(this.readyState==3){
