@@ -42,7 +42,7 @@ app.post("/exchange-token", async (req, res) => {
     });
 
     // Send the access token back to the client
-    res.json({ accessToken: response});
+    res.json({ accessToken: response.data });
   } catch (error) {
     console.error("Error exchanging authorization code for access token:", error.response.data);
     res.status(500).json({ error: error.response.data });
