@@ -1,11 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const axios = require("axios");
 const app = express();
 
+// Replace with your allowed frontend origin (GitHub Pages URL)
+const FRONTEND_ORIGIN = "https://amit-rajput2007.github.io";
+
+// Use CORS middleware
+app.use(cors({
+  origin: FRONTEND_ORIGIN,
+}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 // Replace the following with your Salesforce Connected App configuration
 const CLIENT_ID = "3MVG9XgkMlifdwVAPP1QzilrWxN4vxXanUxrP_wtiJKJMqA6GnZ1u41eQ.oP_8lPeh80GlG4byc0QpN3U2.84"; // Salesforce Connected App Consumer Key
 const CLIENT_SECRET = "6718620B8A4513CE318C18A789951D47EB0B18E931298F428B9C90F10DE44B56"; // Salesforce Connected App Consumer Secret
