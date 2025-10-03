@@ -40,7 +40,7 @@ app.post("/exchange-token", async (req, res) => {
         redirect_uri: REDIRECT_URI,
       },
     });
-
+console.log('###response',response);
     // Send the access token back to the client
     res.json({ accessToken: response.data.access_token });
   } catch (error) {
