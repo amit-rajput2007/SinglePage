@@ -5,7 +5,7 @@ const axios = require("axios");
 const app = express();
 
 // Replace with your allowed frontend origin (GitHub Pages URL)
-const FRONTEND_ORIGIN = "https://amit-rajput2007.github.io";
+const FRONTEND_ORIGIN = "https://amit-rajput2007.github.io/SinglePage";
 
 // Use CORS middleware
 app.use(cors({
