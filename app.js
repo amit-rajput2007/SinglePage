@@ -52,9 +52,9 @@
 // document.getElementById('loginForm').addEventListener('submit', startLogin);
 
 
-var salesforceURL="https://tiger-dev-ed.trailblaze.my.salesforce.com";
+var salesforceURL="https://login.salesforce.com";
 var client_id='3MVG9XgkMlifdwVAPP1QzilrWxN4vxXanUxrP_wtiJKJMqA6GnZ1u41eQ.oP_8lPeh80GlG4byc0QpN3U2.84';
-var redirect_uri='https://github.com/amit-rajput2007/SinglePage/oauth2/callback';
+var redirect_uri='https://amit-rajput2007.github.io/callback';
 
 function getAuthCode(){
     event.preventDefault();
@@ -62,7 +62,6 @@ var req=new XMLHttpRequest();
 
 req.open("POST",salesforceURL+"/services/oauth2/authorize",true);
 req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-req.setRequestHeader("Access-Control-Allow-Origin","https://amit-rajput2007.github.io/");
 req.send("response_type=code&client_id="+client_id+"&redirect_uri="+redirect_uri);
 req.onreadystatechange=function (){
 if(this.readyState==3){
