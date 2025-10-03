@@ -49,7 +49,7 @@
         var redirectUri = 'https://amit-rajput2007.github.io/SinglePage';
         // Generate the Salesforce Authorization URL
         const generateAuthUrl = () => {
-            const authUrl = `${authEndpoint}?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=api`;
+            const authUrl = `${authEndpoint}?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}`;
             console.log("Authorization URL:", authUrl);
             return authUrl;
         };
