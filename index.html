@@ -55,64 +55,52 @@
         };
 
         // Parse the access token from the URL fragment
-        const getAccessTokenFromUrl = () => {
-            const hash = window.location.hash.substring(1); // Extract the part after the "#"
-            const params = new URLSearchParams(hash);
-            return params.get("access_token");
+        // Parse the authorization code from the URL query parameters
+        const getAuthorizationCode = () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get("code");
         };
 
-        // Use the Access Token to Make an API Call
-        const fetchDataFromSalesforce = (accessToken) => {
-            const salesforceApiUrl = "https://tiger-dev-ed.trailblaze.lightning.force.com/services/data/v57.0/sobjects/"; // Change this to the desired API endpoint
-
-            fetch(salesforceApiUrl, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                    "Content-Type": "application/json",
-                },
-            })
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error("Error fetching data from Salesforce: " + response.statusText);
-                    }
-                    return response.json();
-                })
-                .then((data) => {
-                    console.log("Fetched Data:", data);
-                    document.getElementById("result").innerHTML =
-                        "<h3>API Response:</h3><pre>" + JSON.stringify(data, null, 2) + "</pre>";
-                })
-                .catch((error) => {
-                    console.error(error);
-                    document.getElementById("result").innerHTML =
-                        "<p style='color: red;'>Error fetching data from Salesforce: " +
-                        error.message +
-                        "</p>";
+        // Call your backend to exchange the authorization code for an access token
+        const exchangeToken = async (authorizationCode) => {
+            try {
+                const response = await fetch("http://localhost:3000/exchange-token", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ code: authorizationCode }),
                 });
+
+                if (!response.ok) {
+                    throw new Error("Failed to exchange token");
+                }
+
+                const data = await response.json();
+                console.log("Access Token:", data.accessToken);
+
+                document.getElementById("result").innerHTML =
+                    "<p style='color: green;'>Access Token: " +
+                    data.accessToken +
+                    "</p>";
+            } catch (error) {
+                console.error("Error exchanging token:", error);
+                document.getElementById("result").innerHTML =
+                    "<p style='color: red;'>Error: " + error.message + "</p>";
+            }
         };
 
-        // Check for Access Token in URL on Page Load
-        const accessToken = getAccessTokenFromUrl();
-        if (accessToken) {
-            // User is returned from Salesforce with an access token
-            console.log("Access Token:", accessToken);
+        // Check for an authorization code in the URL on page load
+        const authorizationCode = getAuthorizationCode();
+        if (authorizationCode) {
+            // Exchange the authorization code for an access token
+            exchangeToken(authorizationCode);
 
-            // Clear the URL fragment to avoid confusion (optional)
-            window.location.hash = "";
-
-            // Display the authorized status and fetch data
-            document.getElementById("content").innerHTML =
-                "<p style='color: green;'>Connected to Salesforce! Access Token: " +
-                accessToken +
-                "</p><button class='button' onclick='fetchDataFromSalesforce(`" +
-                accessToken +
-                "`)'>Fetch Salesforce Data</button>";
+            // Clear the `code` parameter from the URL (optional)
+            history.replaceState(null, null, window.location.pathname);
         } else {
-            // User is not logged in, show the login button
-            document
-                .getElementById("loginWithSalesforce")
-                .setAttribute("href", generateAuthUrl());
+            // Display the login button if no authorization code is present
+            document.getElementById("loginWithSalesforce").setAttribute("href", generateAuthUrl());
         }
     </script>
 </body>
