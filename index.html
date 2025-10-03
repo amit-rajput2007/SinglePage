@@ -46,7 +46,7 @@
         //const redirectUri = "https://amit-rajput2007.github.io/"; // Replace with your app's URL (hosted on GitHub Pages)
         const authEndpoint = "https://login.salesforce.com/services/oauth2/authorize"; // Use "test.salesforce.com" for Sandbox environments
         var clientId = '3MVG9XgkMlifdwVAPP1QzilrWxN4vxXanUxrP_wtiJKJMqA6GnZ1u41eQ.oP_8lPeh80GlG4byc0QpN3U2.84';
-        var redirectUri = 'https://amit-rajput2007.github.io';
+        var redirectUri = 'https://amit-rajput2007.github.io/SinglePage';
         // Generate the Salesforce Authorization URL
         const generateAuthUrl = () => {
             const authUrl = `${authEndpoint}?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=api`;
